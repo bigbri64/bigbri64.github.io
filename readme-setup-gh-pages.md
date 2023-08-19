@@ -32,19 +32,16 @@ git rm -rf .
 
 ---
 
-
-```bash
-git checkout --orphan gh-pages
-# Creates a new branch, with no history or contents, called gh-pages, and switches to the gh-pages branch
-git rm -rf .
-```
-
 ```bash
 jekyll new --skip-bundle .
 # Creates a Jekyll site in the current directory
+```
 
+Gemfile
+
+```yml
 gem "github-pages", "~> 228", group: :jekyll_plugins
-
+```
 
 _config.yml
 
