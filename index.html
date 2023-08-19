@@ -258,9 +258,9 @@
         --color-btn-primary-border: rgba(31,35,40,0.15);
         --color-btn-primary-shadow: 0 1px 0rgba(31,35,40,0.1);
         --color-btn-primary-inset-shadow: inset 0 1px 0rgba(255,255,255,0.03);
-        --color-btn-primary-hover-bg: #044290;
+        --color-btn-primary-hover-bg: #075ac2;
         --color-btn-primary-hover-border: rgba(31,35,40,0.15);
-        --color-btn-primary-selected-bg: #183377;
+        --color-btn-primary-selected-bg: #054494;
         --color-btn-primary-selected-shadow: inset 0 1px 0rgba(0,45,17,0.2);
         --color-btn-primary-disabled-text: rgba(255,255,255,0.8);
         --color-btn-primary-disabled-bg: #94a2d3;
@@ -345,7 +345,7 @@
         --color-fg-default: #1F2328;
         --color-fg-muted: #656d76;
         --color-fg-subtle: #6e7781;
-        --color-fg-on-emphasis: #ffffff;
+        --color-fg-on-emphasis: #ececec;
         --color-canvas-default: #ffffff;
         --color-canvas-overlay: #ffffff;
         --color-canvas-inset: #f6f8fa;
@@ -497,25 +497,86 @@
         --color-scale-coral-8: #691105;
         --color-scale-coral-9: #510901;
       }
+
+      :root {
+        --focus-outlineColor: #1a73e8;
+        --focus-outlineSize: 2px;
+        --focus-outlineStyle: dotted;
+      }
     </style>
 
 
     <style type="text/css" media="all">
-      a.btn-primary:focus-visible {
-        outline: 2px solid var(--focus-outlineColor, var(--color-accent-fg));
-        outline-offset: -2px;
-        box-shadow: inset 0 0 0 3px var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
+
+      :focus-visible {
+        outline: var(--focus-outlineColor, var(--color-accent-fg)) auto 3px !important;
+        outline-offset: 3px !important;
+        border-radius: 3px !important;
       }
 
-      .btn-primary:focus-visible {
-        outline: 2px solid var(--focus-outlineColor, var(--color-accent-fg));
-        outline-offset: -2px;
-        box-shadow: inset 0 0 0 3px var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
+      .btn {
+        position: relative;
+        display: inline-flex;
+        margin: 0;
+        padding: 8px;
+        padding-right: 15px;
+        align-items: center;
+        font-size: 90%;
+        font-weight: var(--base-text-weight-medium, 500);
+        line-height: 20px;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        -webkit-user-select: none;
+        user-select: none;
+        border: 1px solid;
+        border-radius: 6px;
+        -webkit-appearance: none;
+        appearance: none;
+        height: fit-content;
+        width: fit-content;
       }
-      .btn-primary:hover, .btn-primary.hover, [open]>.btn-primary {
-        background-color: var(--button-primary-bgColor-hover, var(--color-btn-primary-hover-bg));
-        border-color: var(--button-primary-borderColor-hover, var(--color-btn-primary-hover-border));
+
+      .btn {
+        color: var(--button-default-fgColor-rest, var(--color-btn-text));
+        background-color: var(--button-default-bgColor-rest, var(--color-btn-bg));
+        border-color: var(--button-default-borderColor-rest, var(--color-btn-border));
+        box-shadow: var(--button-default-shadow-resting, var(--color-btn-shadow)),var(--button-default-shadow-inset, var(--color-btn-inset-shadow));
+        transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+        transition-property: color,background-color,box-shadow,border-color;
       }
+
+      .btn-primary {
+        color: var(--button-primary-fgColor-rest, var(--color-btn-primary-text));
+        background-color: var(--button-primary-bgColor-rest, var(--color-btn-primary-bg));
+        border-color: var(--button-primary-borderColor-rest, var(--color-btn-primary-border));
+        box-shadow: var(--shadow-resting-small, var(--color-btn-primary-shadow)),var(--shadow-highlight, var(--color-btn-primary-inset-shadow));
+      }
+
+
+      .btn svg {
+        color: inherit !important;
+        display: inline-flex;
+        align-self: flex-start;
+        margin: 0;
+        padding: 3px;
+        padding-right: 8px;
+        height: fit-content;
+        width: fit-content;
+      }
+      .btn svg {
+        fill: var(--button-default-fgColor-rest, var(--color-btn-text));
+      }
+      .btn-primary svg {
+        fill: var(--button-primary-fgColor-rest, var(--color-btn-primary-text));
+      }
+
+      .btn:active {
+        background-color: var(--button-default-bgColor-active, var(--color-btn-active-bg));
+        border-color: var(--button-default-borderColor-active, var(--color-btn-active-border));
+        transition: none;
+      }
+
       .btn:hover, .btn.hover, [open]>.btn {
         background-color: var(--button-default-bgColor-hover, var(--color-btn-hover-bg));
         border-color: var(--button-default-borderColor-hover, var(--color-btn-hover-border));
@@ -530,43 +591,35 @@
         box-shadow: var(--button-primary-shadow-selected, var(--color-btn-primary-selected-shadow));
       }
 
-      .btn:active {
-        background-color: var(--button-default-bgColor-active, var(--color-btn-active-bg));
-        border-color: var(--button-default-borderColor-active, var(--color-btn-active-border));
-        transition: none;
+      .btn-primary:hover, .btn-primary.hover, [open]>.btn-primary {
+        background-color: var(--button-primary-bgColor-hover, var(--color-btn-primary-hover-bg));
+        border-color: var(--button-primary-borderColor-hover, var(--color-btn-primary-hover-border));
       }
 
-      .btn-primary {
-        color: var(--button-primary-fgColor-rest, var(--color-btn-primary-text));
-        background-color: var(--button-primary-bgColor-rest, var(--color-btn-primary-bg));
-        border-color: var(--button-primary-borderColor-rest, var(--color-btn-primary-border));
-        box-shadow: var(--shadow-resting-small, var(--color-btn-primary-shadow)),var(--shadow-highlight, var(--color-btn-primary-inset-shadow));
+      a.btn-primary:focus {
+        outline: 0px solid var(--focus-outlineColor, var(--color-accent-fg));
+        outline-offset: -1px;
+        box-shadow: inset 0 0 0 1px var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
       }
-      .btn {
-        color: var(--button-default-fgColor-rest, var(--color-btn-text));
-        background-color: var(--button-default-bgColor-rest, var(--color-btn-bg));
-        border-color: var(--button-default-borderColor-rest, var(--color-btn-border));
-        box-shadow: var(--button-default-shadow-resting, var(--color-btn-shadow)),var(--button-default-shadow-inset, var(--color-btn-inset-shadow));
-        transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
-        transition-property: color,background-color,box-shadow,border-color;
+      .btn-primary:focus {
+        outline: 0px solid var(--focus-outlineColor, var(--color-accent-fg));
+        outline-offset: -1px;
+        box-shadow: inset 0 0 0 1px var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
       }
-      .btn {
-        position: relative;
-        display: inline-block;
-        padding: 5px 16px;
-        font-size: 14px;
-        font-weight: var(--base-text-weight-medium, 500);
-        line-height: 20px;
-        white-space: nowrap;
-        vertical-align: middle;
-        cursor: pointer;
-        -webkit-user-select: none;
-        user-select: none;
-        border: 1px solid;
-        border-radius: 6px;
-        -webkit-appearance: none;
-        appearance: none;
+      a.btn-primary:active,
+      a.btn-primary:focus-visible {
+        outline: 1px solid var(--focus-outlineColor, var(--color-accent-fg));
+        outline-offset: -1px;
+        box-shadow: inset 0 0 0 1px var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
       }
+
+      .btn-primary:active,
+      .btn-primary:focus-visible {
+        outline: 1px solid var(--focus-outlineColor, var(--color-accent-fg));
+        outline-offset: -1px;
+        box-shadow: inset 0 0 0 1px var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
+      }
+
     </style>
   </head>
   <body>
