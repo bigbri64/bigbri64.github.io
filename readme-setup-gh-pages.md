@@ -45,10 +45,13 @@ gem "github-pages", "~> 228", group: :jekyll_plugins
 
 _config.yml
 
-domain: bigbri64.github.io       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
+```yml
+# domain: bigbri64.github.io       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
 url: https://bigbri64.github.io  # the base hostname and protocol for your site, e.g. http://example.com
-baseurl: /docs/                  # place folder name if the site is served in a subfolder
+# baseurl: /bigbri64.github.io     # place folder name if the site is served in a subfolder
+```
 
+```bash
 git add .
 git commit -m 'Initial GitHub pages site with Jekyll'
 
